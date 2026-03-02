@@ -1,8 +1,8 @@
 <template>
-  <main class="min-h-screen bg-background p-6">
-    <section class="mx-auto w-full max-w-3xl space-y-6">
-      <h1 class="text-3xl font-bold tracking-tight">Proyectos</h1>
-      <p class="text-muted-foreground">Elige una categoría para ver su página.</p>
+  <main class="min-h-screen bg-background px-4 py-8 sm:px-6 sm:py-12">
+    <section class="mx-auto w-full max-w-3xl space-y-6 rounded-xl border bg-card p-6 shadow-sm sm:p-10">
+      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Proyectos</h1>
+      <p class="text-sm text-muted-foreground sm:text-base">Elige una categoría para ver su página.</p>
 
       <div class="flex flex-col sm:flex-row gap-3">
         <RouterLink to="/proyectos/diseno" custom v-slot="{ navigate, isActive }">
@@ -25,7 +25,7 @@
         </RouterLink>
       </div>
 
-      <section class="rounded-lg border p-4">
+      <section class="rounded-lg border p-4 sm:p-6">
         <RouterView />
       </section>
     </section>
