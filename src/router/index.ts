@@ -23,19 +23,17 @@ const router = createRouter({
     {
       path: '/proyectos',
       name: 'proyectos',
-      component: Projects,
-      children: [
-        {
-          path: 'diseno',
-          name: 'proyectos-diseno',
-          component: DesignProject
-        },
-        {
-          path: 'ilustracion',
-          name: 'proyectos-ilustracion',
-          component: IllustrationProject
-        }
-      ]
+      component: Projects
+    },
+    {
+      path: '/proyectos/diseno',
+      name: 'proyectos-diseno',
+      component: DesignProject
+    },
+    {
+      path: '/proyectos/ilustracion',
+      name: 'proyectos-ilustracion',
+      component: IllustrationProject
     },
     {
       path: '/contacto',

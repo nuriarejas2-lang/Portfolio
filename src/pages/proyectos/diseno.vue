@@ -1,8 +1,5 @@
 <template>
-  <article class="space-y-2">
-    <h2 class="text-2xl font-semibold sm:text-3xl">Diseño</h2>
-    <p class="text-sm text-muted-foreground sm:text-base">
-      Aquí puedes mostrar tus proyectos de diseño gráfico, branding, maquetación y web.
-    </p>
-  </article>
+  <main class="min-h-screen bg-white px-6 py-10 sm:px-10">
+    <h1 class="text-4xl font-extrabold text-[#ffabd3]">Diseño</h1>
+  </main>
 </template>
