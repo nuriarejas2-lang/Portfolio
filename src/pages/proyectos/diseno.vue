@@ -18,24 +18,32 @@
 
     <section class="mx-auto w-full max-w-[1500px] px-6 py-10 sm:px-10 sm:py-14 lg:px-16">
       <h1 class="text-4xl font-extrabold text-[#ffabd3] sm:text-5xl">Diseño</h1>
-      <p class="mt-2 text-base text-[#4b4b4b]">Selección de trabajos de diseño.</p>
 
       <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         <RouterLink
           v-for="trabajo in trabajosDiseno"
           :key="trabajo.slug"
           :to="`/proyectos/diseno/${trabajo.slug}`"
-          class="rounded-2xl border border-[#ffabd3] bg-white p-5 transition-transform duration-200 hover:-translate-y-1"
+          class="flex h-full min-h-[440px] flex-col rounded-2xl border border-[#ffabd3] bg-white p-5 transition-transform duration-200 hover:-translate-y-1"
         >
           <img
             v-if="trabajo.miniatura"
             :src="trabajo.miniatura"
             :alt="`Miniatura de ${trabajo.titulo}`"
-            class="mb-4 h-auto w-full rounded-lg object-cover"
+            class="mb-4 h-[260px] w-full rounded-lg bg-white object-contain"
           >
-          <p class="text-xs uppercase tracking-wide text-[#9eaf40]">{{ trabajo.anio }}</p>
-          <h2 class="mt-2 text-xl font-semibold text-[#3f3f3f]">{{ trabajo.titulo }}</h2>
-          <p class="mt-2 text-sm text-[#666666]">{{ trabajo.subtitulo }}</p>
+          <div class="mt-auto flex flex-col">
+            <p class="text-xs uppercase tracking-wide text-[#9eaf40]">{{ trabajo.anio }}</p>
+            <h2 class="mt-2 text-xl font-semibold text-[#3f3f3f]">
+              <template v-if="trabajo.slug === 'maquetacion-articulo'">
+                Maquetación<br><span class="whitespace-nowrap">de artículo</span>
+              </template>
+              <template v-else>
+                {{ trabajo.titulo }}
+              </template>
+            </h2>
+            <p class="pt-3 text-sm text-[#666666]">{{ trabajo.subtitulo }}</p>
+          </div>
         </RouterLink>
       </div>
     </section>

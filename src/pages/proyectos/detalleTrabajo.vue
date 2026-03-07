@@ -22,41 +22,63 @@
       </RouterLink>
 
       <article v-if="trabajo" class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
-        <section class="rounded-2xl border border-[#e7e7e7] bg-[#fafafa] p-4 sm:p-6">
-          <div class="overflow-hidden rounded-lg bg-white">
-            <video
-              v-if="piezaActual && piezaActual.tipo === 'video'"
-              :src="getVideoSrc(piezaActual.src, piezaActual.maxSegundos)"
-              controls
-              preload="auto"
-              playsinline
-              class="h-auto w-full"
-              @loadeddata="mostrarPrimerFrame"
-              @timeupdate="limitarVideo($event, piezaActual.maxSegundos)"
-            />
-            <img
-              v-else-if="piezaActual"
-              :src="piezaActual.src"
-              :alt="piezaActual.alt"
-              class="h-auto w-full object-contain"
+        <section class="flex min-h-[520px] flex-col justify-center rounded-2xl border border-[#e7e7e7] bg-[#fafafa] p-4 sm:p-6">
+          <div class="mx-auto w-full max-w-[640px]">
+            <div
+              class="aspect-[4/3] w-full overflow-hidden rounded-lg"
+              :class="trabajo?.slug === 'soberbia' ? 'bg-transparent' : 'bg-white'"
             >
-            <div v-else class="p-8 text-center text-sm text-[#666666]">Sin material visual</div>
-          </div>
+              <video
+                v-if="piezaActual && piezaActual.tipo === 'video'"
+                :src="getVideoSrc(piezaActual.src, piezaActual.inicioSegundos, piezaActual.finSegundos)"
+                :poster="posterFallback"
+                controls
+                preload="auto"
+                playsinline
+                class="h-full w-full bg-white object-contain"
+                @loadedmetadata="mostrarPrimerFrame($event, piezaActual.inicioSegundos)"
+                @loadeddata="mostrarPrimerFrame($event, piezaActual.inicioSegundos)"
+                @play="forzarInicio($event, piezaActual.inicioSegundos, piezaActual.finSegundos)"
+                @seeking="limitarRango($event, piezaActual.inicioSegundos, piezaActual.finSegundos)"
+                @seeked="pausarVideoPreview"
+                @timeupdate="limitarVideo($event, piezaActual.inicioSegundos, piezaActual.finSegundos)"
+              />
+              <img
+                v-else-if="piezaActual"
+                :src="piezaActual.src"
+                :alt="piezaActual.alt"
+                class="h-full w-full object-contain"
+                :class="trabajo?.slug === 'soberbia' ? '' : 'bg-white'"
+              >
+              <div v-else class="p-8 text-center text-sm text-[#666666]">Sin material visual</div>
+            </div>
 
-          <div v-if="piezas.length > 1" class="mt-4 flex items-center justify-between">
-            <button type="button" class="carousel-btn" @click="anteriorPieza">← Anterior</button>
-            <p class="text-sm text-[#666666]">{{ indiceActual + 1 }} / {{ piezas.length }}</p>
-            <button type="button" class="carousel-btn" @click="siguientePieza">Siguiente →</button>
+            <div v-if="piezas.length > 1" class="mt-4 flex items-center justify-between">
+              <button type="button" class="carousel-btn" aria-label="Imagen anterior" @click="anteriorPieza">
+                <ChevronLeft class="size-5" />
+              </button>
+              <p class="text-sm text-[#666666]">{{ indiceActual + 1 }} / {{ piezas.length }}</p>
+              <button type="button" class="carousel-btn" aria-label="Imagen siguiente" @click="siguientePieza">
+                <ChevronRight class="size-5" />
+              </button>
+            </div>
           </div>
         </section>
 
         <section class="rounded-2xl border border-[#ffabd3] p-6 sm:p-8">
           <p class="text-sm uppercase tracking-wide text-[#9eaf40]">{{ trabajo.anio }}</p>
-          <h1 class="mt-3 text-3xl font-extrabold text-[#ffabd3] sm:text-5xl">{{ trabajo.titulo }}</h1>
+          <h1 class="mt-3 text-3xl font-extrabold text-[#ffabd3] sm:text-5xl">
+            <template v-if="trabajo.slug === 'maquetacion-articulo'">
+              Maquetación<br><span class="whitespace-nowrap">de artículo</span>
+            </template>
+            <template v-else>
+              {{ trabajo.titulo }}
+            </template>
+          </h1>
           <p class="mt-4 text-lg text-[#4b4b4b]">{{ trabajo.subtitulo }}</p>
           <p class="mt-6 text-base leading-8 text-[#4b4b4b]">{{ trabajo.descripcion }}</p>
 
-          <div class="mt-8">
+          <div v-if="trabajo.herramientas.length > 0" class="mt-8">
             <h2 class="text-lg font-semibold text-[#3f3f3f]">Herramientas</h2>
             <ul class="mt-3 flex flex-wrap gap-2">
               <li
@@ -80,6 +102,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 
 import { Button } from '@/components/ui/button'
 import { encontrarTrabajo } from '@/data/trabajos'
@@ -95,6 +118,7 @@ const categoriaLabel = computed(() => (props.categoria === 'diseno' ? 'Diseño' 
 const indiceActual = ref(0)
 const piezas = computed(() => trabajo.value?.media ?? [])
 const piezaActual = computed(() => piezas.value[indiceActual.value])
+const posterFallback = computed(() => piezas.value.find((pieza) => pieza.tipo === 'imagen')?.src ?? '')
 
 watch(
   () => [props.categoria, props.slug],
@@ -113,27 +137,51 @@ const siguientePieza = () => {
   indiceActual.value = (indiceActual.value + 1) % piezas.value.length
 }
 
-const getVideoSrc = (src: string, maxSegundos?: number) => {
-  if (!maxSegundos) return src
-  return `${src}#t=0.01,${maxSegundos}`
+const getInicio = (inicioSegundos?: number) => (inicioSegundos ?? 0) + 0.05
+const getFin = (finSegundos?: number) => (finSegundos ?? Number.POSITIVE_INFINITY) - 0.05
+
+const getVideoSrc = (src: string, inicioSegundos?: number, finSegundos?: number) => {
+  if (inicioSegundos === undefined && finSegundos === undefined) return src
+  const inicio = inicioSegundos ?? 0
+  return `${src}#t=${inicio},${finSegundos ?? ''}`
 }
 
-const mostrarPrimerFrame = (event: Event) => {
+const mostrarPrimerFrame = (event: Event, inicioSegundos?: number) => {
   const video = event.target as HTMLVideoElement
-  if (video.currentTime === 0) {
-    video.currentTime = 0.01
+  const inicio = getInicio(inicioSegundos)
+  if (video.currentTime < inicio) {
+    video.currentTime = inicio
   }
 }
 
-const limitarVideo = (event: Event, maxSegundos?: number) => {
-  if (!maxSegundos) {
+const pausarVideoPreview = (event: Event) => {
+  const video = event.target as HTMLVideoElement
+  video.pause()
+}
+
+const forzarInicio = (event: Event, inicioSegundos?: number, finSegundos?: number) => {
+  limitarRango(event, inicioSegundos, finSegundos)
+}
+
+const limitarRango = (event: Event, inicioSegundos?: number, finSegundos?: number) => {
+  const video = event.target as HTMLVideoElement
+  const inicio = getInicio(inicioSegundos)
+  const fin = getFin(finSegundos)
+
+  if (video.currentTime < inicio || video.currentTime > fin) {
+    video.currentTime = inicio
+  }
+}
+
+const limitarVideo = (event: Event, inicioSegundos?: number, finSegundos?: number) => {
+  if (!finSegundos) {
     return
   }
 
   const video = event.target as HTMLVideoElement
-  if (video.currentTime >= maxSegundos) {
+  if (video.currentTime >= getFin(finSegundos) || video.currentTime < getInicio(inicioSegundos)) {
     video.pause()
-    video.currentTime = 0.01
+    video.currentTime = getInicio(inicioSegundos)
   }
 }
 </script>
@@ -156,13 +204,15 @@ const limitarVideo = (event: Event, maxSegundos?: number) => {
 }
 
 .carousel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
   border: none;
   border-radius: 9999px;
   background: #ffabd3;
   color: white;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.45rem 0.9rem;
 }
 
 .carousel-btn:hover {

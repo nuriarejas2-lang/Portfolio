@@ -3,12 +3,35 @@ import portadaRevista from '@/assets/proyectos/maquetacion-articulo/portada.png'
 import primerPliegoRevista from '@/assets/proyectos/maquetacion-articulo/primer-pliego.png'
 import segundoPliegoRevista from '@/assets/proyectos/maquetacion-articulo/segundo-pliego.png'
 import videoRevista from '@/assets/proyectos/maquetacion-articulo/video-revista.mp4'
+import inconscient1 from '@/assets/proyectos/logo-inconscient/1.png'
+import inconscientLogo from '@/assets/proyectos/logo-inconscient/inconscienttt.png'
+import inconscientPegatinas from '@/assets/proyectos/logo-inconscient/pegatinas.jpg'
+import inconscientVideo from '@/assets/proyectos/logo-inconscient/lainconscient_1.mp4'
+import levis1 from '@/assets/proyectos/coleccion-levis/1.png'
+import levis2 from '@/assets/proyectos/coleccion-levis/2.png'
+import levis3 from '@/assets/proyectos/coleccion-levis/3.png'
+import levis4 from '@/assets/proyectos/coleccion-levis/4.png'
+import levis5 from '@/assets/proyectos/coleccion-levis/5.png'
+import levis6 from '@/assets/proyectos/coleccion-levis/6.png'
+import soberbiaCartel from '@/assets/proyectos/soberbia/cartel-final.jpg'
+import bloomEscenaDobleCanela from '@/assets/proyectos/bloom/escena-doble-canela.jpg'
+import bloomEscenaDobleCacao from '@/assets/proyectos/bloom/escena-doble-cacao.jpg'
+import bloomEscenaDobleTe from '@/assets/proyectos/bloom/escena-doble-te.jpg'
+import bloomEscenaDoble from '@/assets/proyectos/bloom/escena-doble.jpg'
+import bloomHistoria1 from '@/assets/proyectos/bloom/historia-1-23.png'
+import bloomHistoriaCanela from '@/assets/proyectos/bloom/historia-canela-23.png'
+import bloomMockupsHistoriaCacao from '@/assets/proyectos/bloom/mockups-historia-cacao.png'
+import bloomHistoriaNaranja from '@/assets/proyectos/bloom/historia-naranja-23.png'
+import bloomHistoriaTe from '@/assets/proyectos/bloom/historia-te-23.png'
+import bloomMockupsHistoriaLugar from '@/assets/proyectos/bloom/mockups-historia-lugar.png'
+import bloomMasBolsas from '@/assets/proyectos/bloom/mas-bolsas.jpg'
 
 export type TrabajoMedia = {
   tipo: 'imagen' | 'video'
   src: string
   alt: string
-  maxSegundos?: number
+  inicioSegundos?: number
+  finSegundos?: number
 }
 
 export type Trabajo = {
@@ -37,7 +60,8 @@ export const trabajosDiseno: Trabajo[] = [
         tipo: 'video',
         src: videoRevista,
         alt: 'Vídeo de la revista',
-        maxSegundos: 3
+        inicioSegundos: 0,
+        finSegundos: 2.5
       },
       {
         tipo: 'imagen',
@@ -58,6 +82,166 @@ export const trabajosDiseno: Trabajo[] = [
         tipo: 'imagen',
         src: ilustracionRevista,
         alt: 'Ilustración del proyecto editorial'
+      }
+    ]
+  },
+  {
+    slug: 'coleccion-levis',
+    titulo: "Colección Levi's",
+    subtitulo: 'Piezas volumétricas y propuesta digital',
+    anio: '2025',
+    herramientas: ['Sculpey', 'Escayola', 'Adobe Illustrator'],
+    descripcion:
+      "Creación de dos figuras volumétricas que forman parte de una colección mayor de Levi's, que acompañan su estética y su identidad visual inspirada en el imaginario del vaquero y la cultura western. El proyecto explora la relación entre diseño, marca y funcionalidad, utilizando el lenguaje visual. Además, cuenta con una visión hipotética de cómo estas piezas podrían presentarse dentro de la página web de la marca, planteando un posible apartado o sección digital donde se mostrarían los objetos dentro de la colección, integrados en la estética visual y narrativa de la web.",
+    miniatura: levis1,
+    media: [
+      {
+        tipo: 'imagen',
+        src: levis1,
+        alt: "Colección Levi's - imagen 1"
+      },
+      {
+        tipo: 'imagen',
+        src: levis2,
+        alt: "Colección Levi's - imagen 2"
+      },
+      {
+        tipo: 'imagen',
+        src: levis3,
+        alt: "Colección Levi's - imagen 3"
+      },
+      {
+        tipo: 'imagen',
+        src: levis4,
+        alt: "Colección Levi's - imagen 4"
+      },
+      {
+        tipo: 'imagen',
+        src: levis5,
+        alt: "Colección Levi's - imagen 5"
+      },
+      {
+        tipo: 'imagen',
+        src: levis6,
+        alt: "Colección Levi's - imagen 6"
+      }
+    ]
+  },
+  {
+    slug: 'logo-la-inconscient',
+    titulo: 'Logotipo de "La In.Conscient"',
+    subtitulo: 'Identidad visual para compañía teatral',
+    anio: '2025',
+    herramientas: ['Adobe Illustrator', 'Adobe Photoshop'],
+    descripcion:
+      'Logotipo para “La In.Conscient Teatre”, una compañía teatral. Este logotipo es el resultado de un engranaje y un botón de encendido. En ese cruce de significados, el logo representa movimiento y acción. Es una suma entre la ejecución consciente de los procesos y la voluntad por llevarlos a cabo. Gracias al estilo minimalista, el mensaje es el protagonista, y aseguramos la durabilidad del logo en el tiempo.',
+    miniatura: inconscient1,
+    media: [
+      {
+        tipo: 'imagen',
+        src: inconscient1,
+        alt: 'La In.Conscient - imagen 1'
+      },
+      {
+        tipo: 'imagen',
+        src: inconscientLogo,
+        alt: 'La In.Conscient - inconscienttt'
+      },
+      {
+        tipo: 'imagen',
+        src: inconscientPegatinas,
+        alt: 'La In.Conscient - pegatinas'
+      },
+      {
+        tipo: 'video',
+        src: inconscientVideo,
+        alt: 'La In.Conscient - vídeo',
+        inicioSegundos: 18,
+        finSegundos: 26
+      }
+    ]
+  },
+  {
+    slug: 'soberbia',
+    titulo: 'Soberbia',
+    subtitulo: 'Cartel publicitario',
+    anio: '2026',
+    herramientas: ['Adobe Photoshop', 'Adobe InDesign', 'Adobe Premiere Pro'],
+    descripcion:
+      'Cartel publicitario diseñado para la obra teatral “Siete” de Alejandra Wrinkler. La propuesta gráfica aborda el pecado de la soberbia desde una perspectiva contemporánea y disruptiva, alejándose de representaciones tradicionales y apostando por un enfoque visual más conceptual y actual.',
+    miniatura: soberbiaCartel,
+    media: [
+      {
+        tipo: 'imagen',
+        src: soberbiaCartel,
+        alt: 'Cartel final del proyecto Soberbia'
+      }
+    ]
+  },
+  {
+    slug: 'bloom',
+    titulo: 'Bloom',
+    subtitulo: 'Identidad visual, packaging y redes sociales',
+    anio: '2025',
+    herramientas: ['Adobe Illustrator', 'Adobe Photoshop'],
+    descripcion:
+      'Desarrollo de la identidad visual para “Bloom”, una marca de chocolates que busca transmitir una combinación equilibrada entre tradición y renovación. El proyecto incluye el diseño del logotipo, la propuesta de empaquetado y la aplicación de la identidad en redes sociales, creando un sistema visual coherente para los diferentes puntos de contacto de la marca. La dirección estética se inspira en la reinterpretación contemporánea del azulejo tradicional, utilizando sus patrones y su valor cultural como punto de partida para construir una imagen de marca distintiva. A través de esta referencia visual se genera un lenguaje gráfico que conecta con lo artesanal y lo clásico.',
+    miniatura: bloomEscenaDobleCanela,
+    media: [
+      {
+        tipo: 'imagen',
+        src: bloomEscenaDobleCanela,
+        alt: 'Bloom - escena doble canela'
+      },
+      {
+        tipo: 'imagen',
+        src: bloomEscenaDobleCacao,
+        alt: 'Bloom - escena doble cacao'
+      },
+      {
+        tipo: 'imagen',
+        src: bloomEscenaDobleTe,
+        alt: 'Bloom - escena doble te'
+      },
+      {
+        tipo: 'imagen',
+        src: bloomEscenaDoble,
+        alt: 'Bloom - escena doble'
+      },
+      {
+        tipo: 'imagen',
+        src: bloomHistoria1,
+        alt: 'Bloom - historia 1'
+      },
+      {
+        tipo: 'imagen',
+        src: bloomHistoriaCanela,
+        alt: 'Bloom - historia canela'
+      },
+      {
+        tipo: 'imagen',
+        src: bloomMockupsHistoriaCacao,
+        alt: 'Bloom - mockups historia cacao'
+      },
+      {
+        tipo: 'imagen',
+        src: bloomHistoriaNaranja,
+        alt: 'Bloom - historia naranja'
+      },
+      {
+        tipo: 'imagen',
+        src: bloomHistoriaTe,
+        alt: 'Bloom - historia te'
+      },
+      {
+        tipo: 'imagen',
+        src: bloomMockupsHistoriaLugar,
+        alt: 'Bloom - mockups historia lugar'
+      },
+      {
+        tipo: 'imagen',
+        src: bloomMasBolsas,
+        alt: 'Bloom - más bolsas'
       }
     ]
   }
