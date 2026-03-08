@@ -17,6 +17,9 @@
     </header>
 
     <section class="mx-auto w-full max-w-[1500px] px-6 py-10 sm:px-10 sm:py-14 lg:px-16">
+      <Button as-child class="project-back-btn">
+        <RouterLink to="/proyectos">Proyectos</RouterLink>
+      </Button>
       <h1 class="text-4xl font-extrabold text-[#ffabd3] sm:text-5xl">Diseño</h1>
 
       <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -68,6 +71,21 @@ import { trabajosDiseno } from '@/data/trabajos'
 }
 
 .project-nav-btn:hover {
+  background: #ffffff;
+  color: #ffabd3;
+}
+
+.project-back-btn {
+  margin-bottom: 1rem;
+  border: none;
+  background: #ffabd3;
+  color: #ffffff;
+  box-shadow: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.project-back-btn:hover {
   background: #ffffff;
   color: #ffabd3;
 }

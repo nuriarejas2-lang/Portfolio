@@ -24,10 +24,7 @@
       <article v-if="trabajo" class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
         <section class="flex min-h-[520px] flex-col justify-center rounded-2xl border border-[#e7e7e7] bg-[#fafafa] p-4 sm:p-6">
           <div class="mx-auto w-full max-w-[640px]">
-            <div
-              class="aspect-[4/3] w-full overflow-hidden rounded-lg"
-              :class="trabajo?.slug === 'soberbia' ? 'bg-transparent' : 'bg-white'"
-            >
+            <div class="aspect-[4/3] w-full overflow-hidden rounded-lg bg-transparent">
               <video
                 v-if="piezaActual && piezaActual.tipo === 'video'"
                 :src="getVideoSrc(piezaActual.src, piezaActual.inicioSegundos, piezaActual.finSegundos)"
@@ -35,7 +32,7 @@
                 controls
                 preload="auto"
                 playsinline
-                class="h-full w-full bg-white object-contain"
+                class="h-full w-full object-contain"
                 @loadedmetadata="mostrarPrimerFrame($event, piezaActual.inicioSegundos)"
                 @loadeddata="mostrarPrimerFrame($event, piezaActual.inicioSegundos)"
                 @play="forzarInicio($event, piezaActual.inicioSegundos, piezaActual.finSegundos)"
@@ -48,7 +45,6 @@
                 :src="piezaActual.src"
                 :alt="piezaActual.alt"
                 class="h-full w-full object-contain"
-                :class="trabajo?.slug === 'soberbia' ? '' : 'bg-white'"
               >
               <div v-else class="p-8 text-center text-sm text-[#666666]">Sin material visual</div>
             </div>

@@ -25,6 +25,13 @@ import bloomHistoriaNaranja from '@/assets/proyectos/bloom/historia-naranja-23.p
 import bloomHistoriaTe from '@/assets/proyectos/bloom/historia-te-23.png'
 import bloomMockupsHistoriaLugar from '@/assets/proyectos/bloom/mockups-historia-lugar.png'
 import bloomMasBolsas from '@/assets/proyectos/bloom/mas-bolsas.jpg'
+import busMaldito1 from '@/assets/proyectos/el-bus-maldito/1.png'
+import busMaldito2 from '@/assets/proyectos/el-bus-maldito/2.png'
+import busMaldito3 from '@/assets/proyectos/el-bus-maldito/3.png'
+import busMaldito4 from '@/assets/proyectos/el-bus-maldito/4.png'
+import busMaldito5 from '@/assets/proyectos/el-bus-maldito/5.png'
+import busMaldito6 from '@/assets/proyectos/el-bus-maldito/6.png'
+import tresVinetas from '@/assets/proyectos/el-senor-que-hackeo-el-sistema/3-vinetas.png'
 
 export type TrabajoMedia = {
   tipo: 'imagen' | 'video'
@@ -247,7 +254,100 @@ export const trabajosDiseno: Trabajo[] = [
   }
 ]
 
-export const trabajosIlustracion: Trabajo[] = []
+export const trabajosIlustracion: Trabajo[] = [
+  {
+    slug: 'el-bus-maldito',
+    titulo: '"El bus maldito"',
+    subtitulo: 'Cómic de humor y terror',
+    anio: '2024',
+    herramientas: ['Tinta', 'Adobe Photoshop'],
+    descripcion:
+      'Cómic de dos páginas de género humorístico y de terror. Cuenta una historia real con una expresión teatralizada. La obra nace de la adaptación de una anécdota real, elevando lo cotidiano a una dimensión grotesca mediante una expresión teatralizada de los personajes. A través de un dibujo dinámico y un ritmo visual acelerado, se busca que el lector experimente la incomodidad del suceso original, suavizada por el alivio cómico de la exageración.',
+    miniatura: busMaldito1,
+    media: [
+      {
+        tipo: 'imagen',
+        src: busMaldito1,
+        alt: 'El bus maldito - imagen 1'
+      },
+      {
+        tipo: 'imagen',
+        src: busMaldito2,
+        alt: 'El bus maldito - imagen 2'
+      },
+      {
+        tipo: 'imagen',
+        src: busMaldito3,
+        alt: 'El bus maldito - imagen 3'
+      },
+      {
+        tipo: 'imagen',
+        src: busMaldito4,
+        alt: 'El bus maldito - imagen 4'
+      },
+      {
+        tipo: 'imagen',
+        src: busMaldito5,
+        alt: 'El bus maldito - imagen 5'
+      },
+      {
+        tipo: 'imagen',
+        src: busMaldito6,
+        alt: 'El bus maldito - imagen 6'
+      }
+    ]
+  },
+  {
+    slug: 'el-senor-que-hackeo-el-sistema',
+    titulo: '"El señor que hackeó el sistema"',
+    subtitulo: 'Micro-cómic de humor',
+    anio: '2025',
+    herramientas: ['Acuarela'],
+    descripcion:
+      'Micro-cómic de tres viñetas que explora, desde el humor observacional, una situación cotidiana y universal: el uso excesivo de los probadores de perfume en establecimientos comerciales. La historia transforma una anécdota real en una pieza narrativa breve sobre la picaresca y el decoro.',
+    miniatura: tresVinetas,
+    media: [
+      {
+        tipo: 'imagen',
+        src: tresVinetas,
+        alt: 'El señor que hackeó el sistema - micro-cómic'
+      }
+    ]
+  },
+  {
+    slug: 'la-chica-y-el-trueno',
+    titulo: '"La chica y el trueno"',
+    subtitulo: 'Obra pictórica en formato A4',
+    anio: '2025',
+    herramientas: ['Acuarela', 'Témpera', 'Lápices de color'],
+    descripcion: 'Lienzo A4',
+    miniatura: '/proyectos/ilustracion/chicatrueno.tif',
+    media: [
+      {
+        tipo: 'imagen',
+        src: '/proyectos/ilustracion/chicatrueno.tif',
+        alt: 'La chica y el trueno'
+      }
+    ]
+  },
+  {
+    slug: 'espera',
+    titulo: '"Espera"',
+    subtitulo: 'Portada para libro hipotético de terror',
+    anio: '2025',
+    herramientas: ['Acuerela', 'Tinta china'],
+    descripcion:
+      'Portada para un libro hipotético de terror. Mediante el puntillismo y el blanco y negro, se aporta una textura orgánica y granulada que refuerza la atmósfera opresiva y clásica del género.',
+    miniatura: '/proyectos/ilustracion/dibujoespera.tif',
+    media: [
+      {
+        tipo: 'imagen',
+        src: '/proyectos/ilustracion/dibujoespera.tif',
+        alt: 'Espera'
+      }
+    ]
+  }
+]
 
 export const encontrarTrabajo = (categoria: 'diseno' | 'ilustracion', slug: string) => {
   const lista = categoria === 'diseno' ? trabajosDiseno : trabajosIlustracion
