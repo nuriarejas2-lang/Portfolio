@@ -32,6 +32,8 @@ import busMaldito4 from '@/assets/proyectos/el-bus-maldito/4.png'
 import busMaldito5 from '@/assets/proyectos/el-bus-maldito/5.png'
 import busMaldito6 from '@/assets/proyectos/el-bus-maldito/6.png'
 import tresVinetas from '@/assets/proyectos/el-senor-que-hackeo-el-sistema/3-vinetas.png'
+import manoDibujo from '@/assets/proyectos/mano-luminica/manodibujo.png'
+import ninioYPez from '@/assets/proyectos/el-pez-y-el-nino/ninioypez.png'
 
 export type TrabajoMedia = {
   tipo: 'imagen' | 'video'
@@ -344,6 +346,57 @@ export const trabajosIlustracion: Trabajo[] = [
         tipo: 'imagen',
         src: '/proyectos/ilustracion/dibujoespera.tif',
         alt: 'Espera'
+      }
+    ]
+  },
+  {
+    slug: 'mano-luminica',
+    titulo: 'Mano lumínica',
+    subtitulo: 'Lienzo A3',
+    anio: '2025',
+    herramientas: ['Lápices de colores', 'Óleo'],
+    descripcion:
+      'Lienzo A3. Ejercicio de interpretación cromática a partir de un referente en escala de grises. El proyecto explora la construcción de volumen, profundidad y textura mediante una tríada análoga de amarillo, verde y azul, sustituyendo los valores lumínicos tradicionales por transiciones de color vibrantes.',
+    miniatura: manoDibujo,
+    media: [
+      {
+        tipo: 'imagen',
+        src: manoDibujo,
+        alt: 'Mano lumínica'
+      }
+    ]
+  },
+  {
+    slug: 'el-pez-y-el-nino',
+    titulo: '"El pez y el niño"',
+    subtitulo: 'Lienzo A3',
+    anio: '2025',
+    herramientas: ['Pasteles'],
+    descripcion:
+      'Lienzo A3. Un estudio sobre la refracción y la distorsión visual a través del agua. La obra captura la deformación de las facciones infantiles al interactuar con una bolsa de plástico, explorando cómo la luz y el medio líquido alteran nuestra percepción cotidiana de la forma y la realidad.',
+    miniatura: ninioYPez,
+    media: [
+      {
+        tipo: 'imagen',
+        src: ninioYPez,
+        alt: 'El pez y el niño'
+      }
+    ]
+  },
+  {
+    slug: 'cotidianidad-en-tinta',
+    titulo: '"Cotidianidad en tinta"',
+    subtitulo: 'Lienzo A3',
+    anio: '2025',
+    herramientas: ['Tinta china'],
+    descripcion:
+      'Lienzo A3. La obra captura el ritual privado de una mujer frente al espejo, un momento donde la soledad se entrelaza con la mirada ajena. La ausencia de color subraya la pureza del gesto, dejando que el contraste defina la frontera entre lo oculto y lo expuesto.',
+    miniatura: '/proyectos/ilustracion/senora-tinta-china.tif',
+    media: [
+      {
+        tipo: 'imagen',
+        src: '/proyectos/ilustracion/senora-tinta-china.tif',
+        alt: 'Cotidianidad en tinta'
       }
     ]
   }

@@ -7,7 +7,7 @@
             <RouterLink to="/">Inicio</RouterLink>
           </Button>
           <Button as-child class="about-nav-btn">
-            <RouterLink to="/">Proyectos</RouterLink>
+            <RouterLink to="/proyectos">Proyectos</RouterLink>
           </Button>
           <Button as-child class="about-nav-btn">
             <RouterLink to="/contacto">Contacto</RouterLink>
