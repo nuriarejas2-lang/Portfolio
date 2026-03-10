@@ -1,8 +1,17 @@
 <template>
-  <RouterLink v-if="showHomeButton" to="/" class="fixed left-4 top-4 z-50">
-    <Button variant="outline" size="icon" aria-label="Volver al inicio">
-      <House class="size-4" />
-    </Button>
+  <RouterLink
+    v-if="showHomeButton"
+    to="/"
+    class="fixed left-4 top-0 z-50 flex h-20 w-20 items-center justify-center"
+    aria-label="Volver al inicio"
+  >
+    <img
+      :src="homeStar"
+      alt=""
+      class="cursor-pointer object-contain transition-transform duration-200 hover:scale-105"
+      style="width: 88px; height: 88px"
+      draggable="false"
+    >
   </RouterLink>
 
   <RouterView />
@@ -10,10 +19,9 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { House } from 'lucide-vue-next'
 import { useRoute } from 'vue-router'
 
-import { Button } from '@/components/ui/button'
+import homeStar from '@/assets/estrella-home.png'
 
 const route = useRoute()
 const showHomeButton = computed(() => route.path !== '/')
