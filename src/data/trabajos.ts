@@ -2,11 +2,9 @@ import ilustracionRevista from '@/assets/proyectos/maquetacion-articulo/ilustrac
 import portadaRevista from '@/assets/proyectos/maquetacion-articulo/portada.png'
 import primerPliegoRevista from '@/assets/proyectos/maquetacion-articulo/primer-pliego.png'
 import segundoPliegoRevista from '@/assets/proyectos/maquetacion-articulo/segundo-pliego.png'
-import videoRevista from '@/assets/proyectos/maquetacion-articulo/video-revista.mp4'
 import inconscient1 from '@/assets/proyectos/logo-inconscient/1.png'
 import inconscientLogo from '@/assets/proyectos/logo-inconscient/inconscienttt.png'
 import inconscientPegatinas from '@/assets/proyectos/logo-inconscient/pegatinas.jpg'
-import inconscientVideo from '@/assets/proyectos/logo-inconscient/lainconscient_1.mp4'
 import levis1 from '@/assets/proyectos/coleccion-levis/1.png'
 import levis2 from '@/assets/proyectos/coleccion-levis/2.png'
 import levis3 from '@/assets/proyectos/coleccion-levis/3.png'
@@ -65,13 +63,6 @@ export const trabajosDiseno: Trabajo[] = [
       'Este proyecto consiste en la maquetación del artículo “Salud mental en diseñadores: retos y estrategias para el bienestar” de Elena Martínez-Soriano. Su correcta maquetación implica organizar el contenido siguiendo criterios de jerarquía tipográfica, legibilidad y coherencia visual, con el objetivo de presentar el texto de forma clara y ordenada dentro de un formato editorial. Además, para acompañar el artículo, se realizó una ilustración específica para el proyecto que representa de forma abstracta el proceso de ideación y la manera en que nuestros pensamientos influyen y actúan sobre él.',
     miniatura: segundoPliegoRevista,
     media: [
-      {
-        tipo: 'video',
-        src: videoRevista,
-        alt: 'Vídeo de la revista',
-        inicioSegundos: 0,
-        finSegundos: 2.5
-      },
       {
         tipo: 'imagen',
         src: portadaRevista,
@@ -160,13 +151,6 @@ export const trabajosDiseno: Trabajo[] = [
         tipo: 'imagen',
         src: inconscientPegatinas,
         alt: 'La In.Conscient - pegatinas'
-      },
-      {
-        tipo: 'video',
-        src: inconscientVideo,
-        alt: 'La In.Conscient - vídeo',
-        inicioSegundos: 18,
-        finSegundos: 26
       }
     ]
   },
