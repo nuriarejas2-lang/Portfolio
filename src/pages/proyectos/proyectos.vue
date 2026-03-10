@@ -16,37 +16,26 @@
       </div>
     </header>
 
-    <section class="mx-auto w-full max-w-[1500px] px-6 py-10 sm:px-10 sm:py-14 lg:px-16">
+    <section class="mx-auto flex min-h-[calc(100vh-80px)] w-full max-w-[1500px] flex-col items-center justify-center px-6 py-6 sm:px-10 lg:px-16">
       <h1 class="text-center text-4xl font-extrabold text-[#ffabd3] sm:text-5xl">Proyectos</h1>
+      <p class="mt-3 text-center text-[clamp(1rem,1.4vw,1.4rem)] font-medium text-[#9eaf40]">
+        ¿Qué campo quieres explorar?
+      </p>
 
-      <div class="mt-12 grid grid-cols-1 gap-10 md:mt-16 md:grid-cols-2 md:gap-12">
-        <RouterLink
-          to="/proyectos/diseno"
-          class="group relative mx-auto block w-full max-w-[820px] transition-transform duration-200 hover:scale-[1.02]"
+      <div class="mt-16 grid w-full grid-cols-1 gap-8 md:mt-20 md:grid-cols-2 md:gap-10">
+        <Button
+          as-child
+          class="project-big-btn mx-auto h-auto w-full max-w-[640px]"
         >
-          <img
-            :src="designStar"
-            alt="Estrella de Diseño"
-            class="h-auto w-full object-contain"
-          >
-          <span class="absolute inset-0 flex items-center justify-center text-3xl font-medium text-white sm:text-4xl">
-            Diseño
-          </span>
-        </RouterLink>
+          <RouterLink to="/proyectos/diseno">Diseño</RouterLink>
+        </Button>
 
-        <RouterLink
-          to="/proyectos/ilustracion"
-          class="group relative mx-auto block w-full max-w-[820px] transition-transform duration-200 hover:scale-[1.02]"
+        <Button
+          as-child
+          class="project-big-btn mx-auto h-auto w-full max-w-[640px]"
         >
-          <img
-            :src="illustrationStar"
-            alt="Estrella de Ilustración"
-            class="h-auto w-full object-contain"
-          >
-          <span class="absolute inset-0 flex items-center justify-center text-3xl font-medium text-white sm:text-4xl">
-            Ilustración
-          </span>
-        </RouterLink>
+          <RouterLink to="/proyectos/ilustracion">Ilustración</RouterLink>
+        </Button>
       </div>
     </section>
   </main>
@@ -54,8 +43,6 @@
 
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import designStar from '@/assets/estrella-diseno.png'
-import illustrationStar from '@/assets/estrella-ilustracion.png'
 </script>
 
 <style scoped>
@@ -73,5 +60,21 @@ import illustrationStar from '@/assets/estrella-ilustracion.png'
 .project-nav-btn:hover {
   background: #ffffff;
   color: #ffabd3;
+}
+
+.project-big-btn {
+  min-height: clamp(160px, 24vw, 260px);
+  border-radius: 28px;
+  border: 2px solid #9eaf40;
+  background: #ffffff;
+  color: #9eaf40;
+  font-size: clamp(1.6rem, 3.2vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.project-big-btn:hover {
+  background: #9eaf40;
+  color: #ffffff;
 }
 </style>
