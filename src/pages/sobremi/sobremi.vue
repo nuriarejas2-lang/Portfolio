@@ -16,49 +16,88 @@
       </div>
     </header>
 
-    <section class="mx-auto w-full max-w-[1500px] px-6 py-10 sm:px-10 sm:py-14 lg:px-16">
-      <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-        <div class="space-y-10">
-          <article class="max-w-2xl p-6 sm:p-8">
-            <h1 class="text-4xl font-extrabold text-[#ffabd3] sm:text-5xl">Sobre mí</h1>
-
-            <p class="mt-6 text-base leading-8 text-[#4b4b4b] sm:text-lg">
-              Diseñadora e ilustradora en formación, centrada en crear piezas visuales claras y creativas.
-            </p>
-            <p class="mt-5 text-base leading-8 text-[#4b4b4b] sm:text-lg">
-              <span class="font-semibold">Estudios:</span><br>
-              Grado en Diseño y Tecnologías Creativas
-            </p>
-            <p class="mt-5 text-base leading-8 text-[#4b4b4b] sm:text-lg">
-              <span class="font-semibold">Habilidades:</span><br>
-              Diseño editorial, identidad visual e ilustración.
-            </p>
-            <div class="mt-5 text-base leading-8 text-[#4b4b4b] sm:text-lg">
-              <p><span class="font-semibold">Herramientas:</span></p>
-              <p>Adobe Indesign</p>
-              <p>Adobe Illustrator</p>
-              <p>Adobe Photoshop</p>
-              <p>Adobe Premiere Pro</p>
-              <p>Procreate</p>
-            </div>
-          </article>
-        </div>
-
-        <div class="flex justify-center lg:justify-end">
+    <section class="mx-auto flex min-h-[calc(100vh-80px)] w-full max-w-[1750px] items-center px-6 py-6 sm:px-8 md:px-10 lg:px-12">
+      <div class="grid items-center gap-8 lg:grid-cols-[1.15fr_1.2fr] lg:gap-8 xl:gap-10">
+        <figure
+          class="mx-auto w-full max-w-[860px] lg:max-w-[980px]"
+          @mouseenter="isWinking = true"
+          @mouseleave="isWinking = false"
+          @focusin="isWinking = true"
+          @focusout="isWinking = false"
+        >
           <img
-            :src="aboutIllustration"
-            alt="Ilustración Sobre mí"
-            class="h-auto w-full max-w-[620px] object-contain"
+            :src="isWinking ? aboutIllustrationWink : aboutIllustration"
+            alt="Ilustración de Núria"
+            class="h-auto w-full object-contain"
+            draggable="false"
           >
-        </div>
+        </figure>
+
+        <article class="space-y-6 lg:space-y-7">
+          <h1 class="max-w-[900px] text-[clamp(1.6rem,3.2vw,3.55rem)] font-extrabold leading-[1.08] text-[#9eaf40]">
+            ¡Hola! Me llamo Núria Rejas,<br>
+            y soy de Valencia, España.
+          </h1>
+
+          <div class="grid gap-7 xl:grid-cols-[1.15fr_0.75fr] xl:gap-10 mt-2">
+            <div class="space-y-6 text-[clamp(0.95rem,1.05vw,1.15rem)] leading-[1.3] text-[#171717]">
+              <p>
+                Soy diseñadora e ilustradora en formación y mi<br>
+                motor es la utilidad creativa. No busco solo crear<br>
+                piezas bonitas; busco que mis ilustraciones y<br>
+                diseños transmitan una esencia y cumplan una<br>
+                función clara. Me mueve la idea de que el arte<br>
+                visual puede facilitar la vida del resto.
+              </p>
+              <p>
+                Soy una persona trabajadora, con la mente<br>
+                siempre abierta a nuevas ideas. Cada proyecto es<br>
+                para mí una oportunidad de aprendizaje y un paso<br>
+                más hacia mi meta: poner la creatividad al servicio<br>
+                de la comunicación con impacto positivo.
+              </p>
+            </div>
+
+            <aside class="space-y-8 text-[#171717]">
+              <section>
+                <h2 class="about-side-title">ESTUDIOS</h2>
+                <p class="about-side-year">/2022 - 2024</p>
+                <p class="about-side-text">Bachillerato de Diseño y Artes<br>Plásticas (La Salle Paterna)</p>
+                <p class="about-side-year mt-4">/2024 - actualidad</p>
+                <p class="about-side-text">Grado en Diseño y Tecnologías<br>Creativas (Universitat Politècnica<br>de València)</p>
+              </section>
+
+              <section>
+                <h2 class="about-side-title">HABILIDADES</h2>
+                <p class="about-side-text">Ilustración</p>
+                <p class="about-side-text">Diseño editorial</p>
+                <p class="about-side-text">Identidad visual</p>
+              </section>
+
+              <section>
+                <h2 class="about-side-title">HERRAMIENTAS</h2>
+                <p class="about-side-text">Adobe Indesign</p>
+                <p class="about-side-text">Adobe Illustrator</p>
+                <p class="about-side-text">Adobe Photoshop</p>
+                <p class="about-side-text">Adobe Premiere Pro</p>
+                <p class="about-side-text">Procreate</p>
+              </section>
+            </aside>
+          </div>
+        </article>
       </div>
     </section>
   </main>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import { Button } from '@/components/ui/button'
-import aboutIllustration from '@/assets/ilustracion-sobremi.png'
+import aboutIllustration from '@/assets/sobremi/ilustracion-normal.png'
+import aboutIllustrationWink from '@/assets/sobremi/ilustracion-guinando.png'
+
+const isWinking = ref(false)
 </script>
 
 <style scoped>
@@ -74,7 +113,38 @@ import aboutIllustration from '@/assets/ilustracion-sobremi.png'
 }
 
 .about-nav-btn:hover {
+  border: none;
   background: #ffffff;
   color: #ffabd3;
+}
+
+.about-side-title {
+  margin-bottom: 8px;
+  font-size: clamp(1rem, 1.1vw, 1.25rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: #ffabd3;
+}
+
+.about-side-year {
+  font-size: clamp(0.96rem, 1vw, 1.12rem);
+  font-weight: 500;
+  color: #9eaf40;
+}
+
+.about-side-text {
+  font-size: clamp(0.96rem, 1.02vw, 1.14rem);
+  line-height: 1.16;
+}
+
+@media (max-width: 1279px) {
+  .about-side-title {
+    font-size: clamp(0.96rem, 2.3vw, 1.14rem);
+  }
+
+  .about-side-year,
+  .about-side-text {
+    font-size: clamp(0.92rem, 2.2vw, 1.08rem);
+  }
 }
 </style>
