@@ -16,12 +16,46 @@
       </div>
     </header>
 
-    <section class="mx-auto w-full max-w-[1500px] px-6 py-10 sm:px-10 sm:py-14 lg:px-16">
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
-        <article class="bg-white p-6 sm:p-8 lg:p-10">
+    <section class="mx-auto flex min-h-[calc(100vh-80px)] w-full max-w-[1500px] items-center px-6 py-6 sm:px-10 lg:px-16">
+      <div class="mx-auto grid w-full max-w-[1300px] grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-10">
+        <article class="text-white">
+          <h2 class="text-[clamp(2.2rem,4.5vw,4.6rem)] font-extrabold leading-[1.05]">
+            También puedes contactarme por:
+          </h2>
+
+          <div class="mt-10 flex flex-col gap-6 text-[clamp(1.05rem,1.3vw,1.4rem)]">
+            <a
+              href="https://instagram.com/nuria.blablabla"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center gap-4 text-white hover:opacity-80"
+            >
+              <Instagram class="size-6" />
+              <span>@nuria.blablabla</span>
+            </a>
+
+            <a
+              href="mailto:nuriarejas2@gmail.com"
+              class="inline-flex items-center gap-4 text-white hover:opacity-80"
+            >
+              <Mail class="size-6" />
+              <span>nuriarejas2@gmail.com</span>
+            </a>
+
+            <a
+              href="tel:+34610240794"
+              class="inline-flex items-center gap-4 text-white hover:opacity-80"
+            >
+              <Phone class="size-6" />
+              <span>610 24 07 94</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="w-full max-w-[640px] justify-self-end rounded-[36px] bg-white p-6 sm:p-8 lg:p-10">
           <h1 class="text-3xl font-extrabold text-[#9eaf40] sm:text-4xl">Contacto</h1>
           <p class="mt-3 text-sm text-[#4b4b4b] sm:text-base">
-            Rellena el formulario y me pondré en contacto contigo.
+            Si quieres colaborar conmigo, responde a este formulario :)
           </p>
 
           <form class="mt-6 grid grid-cols-1 gap-4">
@@ -57,37 +91,13 @@
             <Button type="submit" class="contact-submit-btn w-full sm:w-fit">Enviar</Button>
           </form>
         </article>
-
-        <article class="bg-white p-6 sm:p-8 lg:p-10">
-          <h2 class="text-xl font-semibold text-[#4b4b4b] sm:text-2xl">También puedes contactarme por:</h2>
-
-          <div class="mt-8 space-y-5">
-            <a
-              href="https://instagram.com/nuria.blablabla"
-              target="_blank"
-              rel="noreferrer"
-              class="inline-flex items-center gap-3 text-[#4b4b4b] hover:text-[#9eaf40]"
-            >
-              <Instagram class="size-5" />
-              <span class="text-base">@nuria.blablabla</span>
-            </a>
-
-            <a
-              href="mailto:nuriarejas2@gmail.com"
-              class="inline-flex items-center gap-3 text-[#4b4b4b] hover:text-[#9eaf40]"
-            >
-              <Mail class="size-5" />
-              <span class="text-base">nuriarejas2@gmail.com</span>
-            </a>
-          </div>
-        </article>
       </div>
     </section>
   </main>
 </template>
 
 <script setup lang="ts">
-import { Instagram, Mail } from 'lucide-vue-next'
+import { Instagram, Mail, Phone } from 'lucide-vue-next'
 
 import { Button } from '@/components/ui/button'
 </script>
