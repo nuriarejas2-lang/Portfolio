@@ -306,12 +306,13 @@ export const trabajosIlustracion: Trabajo[] = [
     subtitulo: 'Obra pictórica en formato A4',
     anio: '2025',
     herramientas: ['Acuarela', 'Témpera', 'Lápices de color'],
-    descripcion: 'Lienzo A4',
-    miniatura: '/proyectos/ilustracion/chicatrueno.tif',
+    descripcion:
+      'Obra pictórica realizada en formato A4 que explora la fragilidad humana frente a la fuerza de la naturaleza. A través de un escenario de alto contraste, la pieza captura un instante de catarsis emocional, utilizando el fenómeno meteorológico como una extensión del mundo interno de la protagonista.\n\nObra original de Caroline Absher.',
+    miniatura: '/proyectos/ilustracion/chicatrueno.png',
     media: [
       {
         tipo: 'imagen',
-        src: '/proyectos/ilustracion/chicatrueno.tif',
+        src: '/proyectos/ilustracion/chicatrueno.png',
         alt: 'La chica y el trueno'
       }
     ]
@@ -324,11 +325,11 @@ export const trabajosIlustracion: Trabajo[] = [
     herramientas: ['Acuerela', 'Tinta china'],
     descripcion:
       'Portada para un libro hipotético de terror. Mediante el puntillismo y el blanco y negro, se aporta una textura orgánica y granulada que refuerza la atmósfera opresiva y clásica del género.',
-    miniatura: '/proyectos/ilustracion/dibujoespera.tif',
+    miniatura: '/proyectos/ilustracion/dibujoespera.png',
     media: [
       {
         tipo: 'imagen',
-        src: '/proyectos/ilustracion/dibujoespera.tif',
+        src: '/proyectos/ilustracion/dibujoespera.png',
         alt: 'Espera'
       }
     ]
@@ -375,11 +376,11 @@ export const trabajosIlustracion: Trabajo[] = [
     herramientas: ['Tinta china'],
     descripcion:
       'Lienzo A3. La obra captura el ritual privado de una mujer frente al espejo, un momento donde la soledad se entrelaza con la mirada ajena. La ausencia de color subraya la pureza del gesto, dejando que el contraste defina la frontera entre lo oculto y lo expuesto.',
-    miniatura: '/proyectos/ilustracion/senora-tinta-china.tif',
+    miniatura: '/proyectos/ilustracion/senora-tinta-china.png',
     media: [
       {
         tipo: 'imagen',
-        src: '/proyectos/ilustracion/senora-tinta-china.tif',
+        src: '/proyectos/ilustracion/senora-tinta-china.png',
         alt: 'Cotidianidad en tinta'
       }
     ]

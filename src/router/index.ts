@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '@/pages/home/Home.vue'
 import About from '@/pages/sobremi/sobremi.vue'
+import ProjectsLayout from '@/pages/proyectos/ProyectosLayout.vue'
 import Projects from '@/pages/proyectos/proyectos.vue'
 import DesignProject from '@/pages/proyectos/diseno.vue'
 import IllustrationProject from '@/pages/proyectos/ilustracion.vue'
@@ -23,30 +24,36 @@ const router = createRouter({
     },
     {
       path: '/proyectos',
-      name: 'proyectos',
-      component: Projects
-    },
-    {
-      path: '/proyectos/diseno',
-      name: 'proyectos-diseno',
-      component: DesignProject
-    },
-    {
-      path: '/proyectos/diseno/:slug',
-      name: 'proyectos-diseno-detalle',
-      component: WorkDetail,
-      props: (route) => ({ categoria: 'diseno', slug: route.params.slug as string })
-    },
-    {
-      path: '/proyectos/ilustracion',
-      name: 'proyectos-ilustracion',
-      component: IllustrationProject
-    },
-    {
-      path: '/proyectos/ilustracion/:slug',
-      name: 'proyectos-ilustracion-detalle',
-      component: WorkDetail,
-      props: (route) => ({ categoria: 'ilustracion', slug: route.params.slug as string })
+      component: ProjectsLayout,
+      children: [
+        {
+          path: '',
+          name: 'proyectos',
+          component: Projects
+        },
+        {
+          path: 'diseno',
+          name: 'proyectos-diseno',
+          component: DesignProject
+        },
+        {
+          path: 'diseno/:slug',
+          name: 'proyectos-diseno-detalle',
+          component: WorkDetail,
+          props: (route) => ({ categoria: 'diseno', slug: route.params.slug as string })
+        },
+        {
+          path: 'ilustracion',
+          name: 'proyectos-ilustracion',
+          component: IllustrationProject
+        },
+        {
+          path: 'ilustracion/:slug',
+          name: 'proyectos-ilustracion-detalle',
+          component: WorkDetail,
+          props: (route) => ({ categoria: 'ilustracion', slug: route.params.slug as string })
+        }
+      ]
     },
     {
       path: '/contacto',
